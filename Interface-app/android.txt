@@ -1,0 +1,3 @@
+title=OwnHome
+author=Kacper
+orientation=landscape

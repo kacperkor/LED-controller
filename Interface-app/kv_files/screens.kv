@@ -1,0 +1,65 @@
+#:kivy 1.11.1
+#:import RiseInTransition kivy.uix.screenmanager.RiseInTransition
+#:import FallOutTransition kivy.uix.screenmanager.FallOutTransition
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
+
+
+<MenuScreen>
+    ScreenBox:
+        BoxLayout:
+            size_hint_y: None
+            height: 40
+            Button:
+                text: 'SETTINGS'
+                on_press:
+                    root.manager.transition = SlideTransition()
+                    root.manager.transition.direction = 'right'
+                    # root.manager.current = 'settings'
+                    app.open_settings()
+            Label:
+                text: 'LED REMOTE'
+            Button:
+                text: 'QUIT'
+                on_release: exit()
+
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                text: 'Manual control'
+                on_press:
+                    root.manager.transition = SlideTransition()
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'manual'
+            Button:
+                text: 'Predefined Transitions'
+                on_press:
+                    root.manager.transition = SlideTransition()
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = 'predefined'
+
+
+<ManualScreen>
+    ScreenBox:
+        Button:
+            size_hint_y: None
+            height: 40
+            text: 'Back'
+            on_press:
+                root.manager.transition = SlideTransition()
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'menu'
+        ManualFrame
+
+
+<PredefinedScreen>
+    ScreenBox:
+        Button:
+            size_hint_y: None
+            height: 40
+            text: 'Back'
+            on_press:
+                root.manager.transition = SlideTransition()
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'menu'
+        PredefinedFrame
+
